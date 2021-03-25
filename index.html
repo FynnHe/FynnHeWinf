@@ -18,12 +18,12 @@ var vRentenendwert1;
 
 vZinssatz = parseFloat(document.getElementById("idZinssatz").value);
 vNRente =  parseFloat(document.getElementById("idRente").value);
-vLaufzeit = parseFloat(document.getElementById("idZinssatz").value);
+vLaufzeit = parseFloat(document.getElementById("idLaufzeit").value);
 
 vZinsfaktor = 1 + vZinssatz / 100;
 vStartjahr = 0;
 
-vRentenendwert = vNRente * (Math.pow(vZinsfaktor, 5) -1) / (vZinsfaktor-1);
+vRentenendwert = vNRente * (Math.pow(vZinsfaktor, vLaufzeit) -1) / (vZinsfaktor-1);
 
 
 
@@ -35,7 +35,7 @@ vAusgabehtml = vAusgabehtml + "<tr><th>Jahr</th><th>Kapital am 1.1.</th><th>Zins
 
 
 
-while (vStartjahr < 5) {
+while (vStartjahr < vLaufzeit) {
       vRentenendwert = vNRente * (Math.pow(vZinsfaktor, vStartjahr) -1) / (vZinsfaktor-1);
       vZinsen = vRentenendwert * vZinssatz/100;
       vRentenendwert1 = vRentenendwert + vNRente + vZinsen;
